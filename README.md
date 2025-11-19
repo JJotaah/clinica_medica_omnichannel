@@ -194,8 +194,8 @@ Este projeto é fornecido como trabalho acadêmico. Sinta-se livre para usar, mo
 ## 👥 Autor
 
 João Julio Pimentel Filho
-Aluno de ADS - [Instituição]
-Data: Novembro 2024
+Aluno de ADS - UNIC
+Data: NOVEMBRO - 2025
 
 ## 📞 Suporte
 
