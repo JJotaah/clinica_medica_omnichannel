@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Omnichannel - Painel do Gerente</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <span class="logo-icon">💬</span>
+                        <div>
+                            <h1>Sistema Omnichannel</h1>
+                            <p>Painel do Gerente</p>
+                        </div>
+                    </div>
+                    <div class="user-menu">
+                        <span>Olá, Carlos Gerente</span>
+                        <button class="btn btn-outline">Sair</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container">
+                <!-- Dashboard Metrics -->
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <h3>Total de Conversas</h3>
+                        <p class="metric-value">42</p>
+                        <span class="metric-label">Todas as conversas</span>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Fila de Espera</h3>
+                        <p class="metric-value" style="color: #ff6b35;">5</p>
+                        <span class="metric-label">Aguardando atribuição</span>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Em Atendimento</h3>
+                        <p class="metric-value" style="color: #4ecdc4;">8</p>
+                        <span class="metric-label">Sendo atendidas</span>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Atendentes Ativos</h3>
+                        <p class="metric-value" style="color: #2ecc71;">4</p>
+                        <span class="metric-label">Disponíveis</span>
+                    </div>
+                </div>
+
+                <!-- Tabs -->
+                <div class="tabs">
+                    <button class="tab-button active" onclick="switchTab('fila')">Fila de Espera (5)</button>
+                    <button class="tab-button" onclick="switchTab('atendimento')">Em Atendimento (8)</button>
+                    <button class="tab-button" onclick="switchTab('resolvidas')">Resolvidas (29)</button>
+                    <button class="tab-button" onclick="switchTab('atendentes')">Atendentes</button>
+                </div>
+
+                <!-- Tab Content -->
+                <div id="filaTab" class="tab-content active">
+                    <h3>Conversas Aguardando Atribuição</h3>
+                    <div class="conversations-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Paciente</th>
+                                    <th>Assunto</th>
+                                    <th>Canal</th>
+                                    <th>Tempo de Espera</th>
+                                    <th>Ação</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>João Silva</td>
+                                    <td>Agendamento de Consulta</td>
+                                    <td><span class="channel-badge whatsapp">WhatsApp</span></td>
+                                    <td>15 min</td>
+                                    <td><button class="btn btn-small" onclick="assignConversation(1)">Atribuir</button></td>
+                                </tr>
+                                <tr>
+                                    <td>Ana Costa</td>
+                                    <td>Resultado de Exame</td>
+                                    <td><span class="channel-badge email">E-mail</span></td>
+                                    <td>12 min</td>
+                                    <td><button class="btn btn-small" onclick="assignConversation(2)">Atribuir</button></td>
+                                </tr>
+                                <tr>
+                                    <td>Pedro Oliveira</td>
+                                    <td>Renovação de Receita</td>
+                                    <td><span class="channel-badge instagram">Instagram</span></td>
+                                    <td>8 min</td>
+                                    <td><button class="btn btn-small" onclick="assignConversation(3)">Atribuir</button></td>
+                                </tr>
+                                <tr>
+                                    <td>Maria Santos</td>
+                                    <td>Dúvida sobre Medicação</td>
+                                    <td><span class="channel-badge facebook">Facebook</span></td>
+                                    <td>5 min</td>
+                                    <td><button class="btn btn-small" onclick="assignConversation(4)">Atribuir</button></td>
+                                </tr>
+                                <tr>
+                                    <td>Lucas Ferreira</td>
+                                    <td>Agendamento de Exame</td>
+                                    <td><span class="channel-badge chat">Chat</span></td>
+                                    <td>2 min</td>
+                                    <td><button class="btn btn-small" onclick="assignConversation(5)">Atribuir</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="atendimentoTab" class="tab-content">
+                    <h3>Conversas em Atendimento</h3>
+                    <div class="conversations-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Paciente</th>
+                                    <th>Assunto</th>
+                                    <th>Atendente</th>
+                                    <th>Canal</th>
+                                    <th>Tempo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Roberto Costa</td>
+                                    <td>Consulta Urgente</td>
+                                    <td>Maria Santos</td>
+                                    <td><span class="channel-badge whatsapp">WhatsApp</span></td>
+                                    <td>8 min</td>
+                                </tr>
+                                <tr>
+                                    <td>Fernanda Lima</td>
+                                    <td>Agendamento</td>
+                                    <td>Carlos Silva</td>
+                                    <td><span class="channel-badge email">E-mail</span></td>
+                                    <td>5 min</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="resolvidasTab" class="tab-content">
+                    <h3>Conversas Resolvidas Hoje</h3>
+                    <p>29 conversas foram resolvidas com sucesso.</p>
+                </div>
+
+                <div id="atendentesTab" class="tab-content">
+                    <h3>Gestão de Atendentes</h3>
+                    <div class="attendants-grid">
+                        <div class="attendant-card">
+                            <h4>Maria Santos</h4>
+                            <p class="status online">● Online</p>
+                            <div class="stats">
+                                <div><strong>12</strong><br>Atendimentos</div>
+                                <div><strong>4.8</strong><br>Avaliação</div>
+                                <div><strong>5 min</strong><br>Tempo Médio</div>
+                            </div>
+                        </div>
+                        <div class="attendant-card">
+                            <h4>Carlos Silva</h4>
+                            <p class="status online">● Online</p>
+                            <div class="stats">
+                                <div><strong>10</strong><br>Atendimentos</div>
+                                <div><strong>4.6</strong><br>Avaliação</div>
+                                <div><strong>6 min</strong><br>Tempo Médio</div>
+                            </div>
+                        </div>
+                        <div class="attendant-card">
+                            <h4>Juliana Costa</h4>
+                            <p class="status online">● Online</p>
+                            <div class="stats">
+                                <div><strong>9</strong><br>Atendimentos</div>
+                                <div><strong>4.9</strong><br>Avaliação</div>
+                                <div><strong>4 min</strong><br>Tempo Médio</div>
+                            </div>
+                        </div>
+                        <div class="attendant-card">
+                            <h4>Roberto Mendes</h4>
+                            <p class="status online">● Online</p>
+                            <div class="stats">
+                                <div><strong>11</strong><br>Atendimentos</div>
+                                <div><strong>4.7</strong><br>Avaliação</div>
+                                <div><strong>5 min</strong><br>Tempo Médio</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

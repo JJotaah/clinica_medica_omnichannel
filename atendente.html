@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Omnichannel - Painel do Atendente</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <span class="logo-icon">💬</span>
+                        <div>
+                            <h1>Sistema Omnichannel</h1>
+                            <p>Painel do Atendente</p>
+                        </div>
+                    </div>
+                    <div class="user-menu">
+                        <span>Olá, Maria Santos</span>
+                        <button class="btn btn-outline">Sair</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container">
+                <div class="attendant-layout">
+                    <!-- Sidebar - Conversations List -->
+                    <aside class="sidebar">
+                        <div class="sidebar-header">
+                            <h3>Caixa de Entrada</h3>
+                            <span class="badge-count">3</span>
+                        </div>
+                        <div class="conversations-sidebar">
+                            <div class="conversation-item active" onclick="selectConversation(1)">
+                                <div class="conversation-item-header">
+                                    <strong>João Silva</strong>
+                                    <span class="time">14:30</span>
+                                </div>
+                                <p>Gostaria de agendar uma consulta...</p>
+                                <span class="channel-badge whatsapp">WhatsApp</span>
+                            </div>
+                            <div class="conversation-item" onclick="selectConversation(2)">
+                                <div class="conversation-item-header">
+                                    <strong>Ana Costa</strong>
+                                    <span class="time">13:15</span>
+                                </div>
+                                <p>Dúvida sobre o resultado do exame</p>
+                                <span class="channel-badge email">E-mail</span>
+                            </div>
+                            <div class="conversation-item" onclick="selectConversation(3)">
+                                <div class="conversation-item-header">
+                                    <strong>Pedro Oliveira</strong>
+                                    <span class="time">12:45</span>
+                                </div>
+                                <p>Preciso de uma receita renovada</p>
+                                <span class="channel-badge instagram">Instagram</span>
+                            </div>
+                        </div>
+                    </aside>
+
+                    <!-- Main - Conversation View -->
+                    <div class="conversation-main">
+                        <div class="conversation-header-main">
+                            <div>
+                                <h2 id="patientName">João Silva</h2>
+                                <p id="conversationSubject">Agendamento de Consulta</p>
+                            </div>
+                            <div class="conversation-actions">
+                                <button class="btn btn-small" onclick="markAsResolved()">✓ Marcar como Resolvida</button>
+                            </div>
+                        </div>
+
+                        <div class="chat-area">
+                            <div class="message message-received">
+                                <div class="message-content">
+                                    <p>Olá! Como posso ajudá-lo?</p>
+                                    <span class="message-time">14:20</span>
+                                </div>
+                            </div>
+                            <div class="message message-sent">
+                                <div class="message-content">
+                                    <p>Gostaria de agendar uma consulta com o Dr. Silva</p>
+                                    <span class="message-time">14:25</span>
+                                </div>
+                            </div>
+                            <div class="message message-received">
+                                <div class="message-content">
+                                    <p>Claro! Qual dia você prefere?</p>
+                                    <span class="message-time">14:26</span>
+                                </div>
+                            </div>
+                            <div class="message message-sent">
+                                <div class="message-content">
+                                    <p>Próxima terça-feira, se possível</p>
+                                    <span class="message-time">14:27</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="quick-replies">
+                            <p class="quick-replies-label">Respostas Rápidas:</p>
+                            <div class="quick-replies-buttons">
+                                <button class="btn btn-quick" onclick="useQuickReply('Agendamento confirmado para terça-feira às 10:00')">Confirmar Agendamento</button>
+                                <button class="btn btn-quick" onclick="useQuickReply('Consulte nossa página de horários disponíveis')">Horários Disponíveis</button>
+                                <button class="btn btn-quick" onclick="useQuickReply('Obrigada por entrar em contato! Em breve retornaremos')">Retorno em Breve</button>
+                            </div>
+                        </div>
+
+                        <div class="message-input-area">
+                            <textarea id="messageInput" class="form-control" rows="3" placeholder="Digite sua mensagem..."></textarea>
+                            <button class="btn btn-primary" onclick="sendMessage()">Enviar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

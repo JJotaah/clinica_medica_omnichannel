@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Omnichannel - Painel do Paciente</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <span class="logo-icon">💬</span>
+                        <div>
+                            <h1>Sistema Omnichannel</h1>
+                            <p>Painel do Paciente</p>
+                        </div>
+                    </div>
+                    <div class="user-menu">
+                        <span>Olá, João Silva</span>
+                        <button class="btn btn-outline">Sair</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container">
+                <div class="page-header">
+                    <h2>Minhas Conversas</h2>
+                    <button class="btn btn-primary" onclick="openNewConversationDialog()">
+                        ➕ Nova Conversa
+                    </button>
+                </div>
+
+                <!-- Conversations List -->
+                <div class="conversations-list">
+                    <div class="conversation-card">
+                        <div class="conversation-header">
+                            <div>
+                                <h3>Agendamento de Consulta</h3>
+                                <p>Canal: WhatsApp • Criada em 19/11/2024</p>
+                            </div>
+                            <span class="badge badge-in-progress">Em Atendimento</span>
+                        </div>
+                        <div class="conversation-body">
+                            <p>Última atualização: 19/11/2024 às 14:30</p>
+                        </div>
+                        <div class="conversation-footer">
+                            <button class="btn btn-small" onclick="openConversation(1)">Abrir Conversa</button>
+                        </div>
+                    </div>
+
+                    <div class="conversation-card">
+                        <div class="conversation-header">
+                            <div>
+                                <h3>Resultado de Exame</h3>
+                                <p>Canal: E-mail • Criada em 18/11/2024</p>
+                            </div>
+                            <span class="badge badge-resolved">Resolvida</span>
+                        </div>
+                        <div class="conversation-body">
+                            <p>Última atualização: 18/11/2024 às 10:15</p>
+                        </div>
+                        <div class="conversation-footer">
+                            <button class="btn btn-small" onclick="openConversation(2)">Abrir Conversa</button>
+                        </div>
+                    </div>
+
+                    <div class="conversation-card">
+                        <div class="conversation-header">
+                            <div>
+                                <h3>Dúvida sobre Medicação</h3>
+                                <p>Canal: Instagram Direct • Criada em 17/11/2024</p>
+                            </div>
+                            <span class="badge badge-open">Aberta</span>
+                        </div>
+                        <div class="conversation-body">
+                            <p>Última atualização: 17/11/2024 às 16:45</p>
+                        </div>
+                        <div class="conversation-footer">
+                            <button class="btn btn-small" onclick="openConversation(3)">Abrir Conversa</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- New Conversation Dialog -->
+        <div id="newConversationDialog" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Iniciar Nova Conversa</h2>
+                    <button class="close-btn" onclick="closeNewConversationDialog()">✕</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="channel">Canal de Atendimento</label>
+                        <select id="channel" class="form-control">
+                            <option value="">Selecione um canal</option>
+                            <option value="whatsapp">WhatsApp</option>
+                            <option value="instagram">Instagram Direct</option>
+                            <option value="facebook">Facebook Messenger</option>
+                            <option value="email">E-mail</option>
+                            <option value="chat">Chat do Site</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Assunto</label>
+                        <input type="text" id="subject" class="form-control" placeholder="Ex: Agendamento de consulta">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mensagem</label>
+                        <textarea id="message" class="form-control" rows="4" placeholder="Descreva seu problema ou dúvida"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-outline" onclick="closeNewConversationDialog()">Cancelar</button>
+                    <button class="btn btn-primary" onclick="createConversation()">Iniciar Conversa</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Conversation View Dialog -->
+        <div id="conversationDialog" class="modal hidden">
+            <div class="modal-content modal-large">
+                <div class="modal-header">
+                    <h2 id="conversationTitle">Conversa</h2>
+                    <button class="close-btn" onclick="closeConversationDialog()">✕</button>
+                </div>
+                <div class="modal-body">
+                    <div class="chat-container">
+                        <div class="message message-received">
+                            <div class="message-content">
+                                <p>Olá! Como posso ajudá-lo?</p>
+                                <span class="message-time">14:20</span>
+                            </div>
+                        </div>
+                        <div class="message message-sent">
+                            <div class="message-content">
+                                <p>Gostaria de agendar uma consulta com o Dr. Silva</p>
+                                <span class="message-time">14:25</span>
+                            </div>
+                        </div>
+                        <div class="message message-received">
+                            <div class="message-content">
+                                <p>Claro! Qual dia você prefere?</p>
+                                <span class="message-time">14:26</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="text" class="form-control" placeholder="Digite sua mensagem...">
+                    <button class="btn btn-primary">Enviar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
