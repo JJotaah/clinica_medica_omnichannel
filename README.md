@@ -193,7 +193,7 @@ Este projeto é fornecido como trabalho acadêmico. Sinta-se livre para usar, mo
 
 ## 👥 Autor
 
-[Seu Nome]
+João Julio Pimentel Filho
 Aluno de ADS - [Instituição]
 Data: Novembro 2024
 
